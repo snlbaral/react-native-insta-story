@@ -32,7 +32,7 @@ const react_native_1 = require("react-native");
 const react_native_swipe_gestures_1 = __importDefault(require("react-native-swipe-gestures"));
 const helpers_1 = require("./helpers");
 const { width, height } = react_native_1.Dimensions.get('window');
-const StoryListItem = ({ index, key, profileImage, profileName, duration, customCloseComponent, customSwipeUpComponent, onFinish, onClosePress, stories, currentPage, currentStoryIndexRef, ListItemRightHeaderComponent, ...props }) => {
+const StoryListItem = ({ index, key, profileImage, profileName, duration, customCloseComponent, customSwipeUpComponent, onFinish, onClosePress, stories, currentPage, currentStoryItemRef, ListItemRightHeaderComponent, ...props }) => {
     const [load, setLoad] = (0, react_1.useState)(true);
     const [pressed, setPressed] = (0, react_1.useState)(false);
     const [content, setContent] = (0, react_1.useState)(stories.map((x) => ({
@@ -80,7 +80,7 @@ const StoryListItem = ({ index, key, profileImage, profileName, duration, custom
                 }
             }
         }
-        currentStoryIndexRef.current = current;
+        currentStoryItemRef.current = { dataIndex: currentPage, story: content[current] };
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [current]);
     function start() {
@@ -186,7 +186,7 @@ const StoryListItem = ({ index, key, profileImage, profileName, duration, custom
             <react_native_1.Text style={styles.avatarText}>{profileName}</react_native_1.Text>
           </react_native_1.View>
           <react_native_1.View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            {ListItemRightHeaderComponent ? (<ListItemRightHeaderComponent />) : (null)}
+            {ListItemRightHeaderComponent ? (<react_native_1.View>{ListItemRightHeaderComponent}</react_native_1.View>) : (null)}
             <react_native_1.TouchableOpacity onPress={() => {
             if (onClosePress) {
                 onClosePress();

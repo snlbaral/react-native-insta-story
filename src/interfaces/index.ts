@@ -67,7 +67,7 @@ export interface StoryListItemProps {
   onClosePress: (props?: any) => any;
   stories: IUserStoryItem[];
   currentPage: number;
-  currentStoryIndexRef: any;
+  currentStoryItemRef: any;
   ListItemRightHeaderComponent: any;
 }
 
