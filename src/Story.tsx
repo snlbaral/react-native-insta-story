@@ -34,7 +34,7 @@ export const Story = ({
   const [currentPage, setCurrentPage] = useState<number>(0);
   const [selectedData, setSelectedData] = useState<IUserStory[]>([]);
   const cube = useRef<any>();
-  const currentStoryIndexRef = currentStoryRef ? currentStoryRef : useRef<number>(0)
+  const currentStoryItemRef = currentStoryRef ? currentStoryRef : useRef<number>(0)
 
   // Component Functions
   const _handleStoryItemPress = (item: IUserStory, index?: number) => {
@@ -116,7 +116,7 @@ export const Story = ({
             }
           }}
           index={i}
-          currentStoryIndexRef={currentStoryIndexRef}
+          currentStoryItemRef={currentStoryItemRef}
           ListItemRightHeaderComponent={ListItemRightHeaderComponent}
         />
       );

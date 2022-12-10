@@ -36,7 +36,7 @@ export const StoryListItem = ({
   onClosePress,
   stories,
   currentPage,
-  currentStoryIndexRef,
+  currentStoryItemRef,
   ListItemRightHeaderComponent,
   ...props
 }: StoryListItemProps) => {
@@ -97,9 +97,10 @@ export const StoryListItem = ({
         }
       }
     }
-    currentStoryIndexRef.current = current
+    currentStoryItemRef.current = {dataIndex:currentPage,story:content[current]};
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [current]);
+  
 
   function start() {
     setLoad(false);
@@ -230,7 +231,7 @@ export const StoryListItem = ({
           </View>
           <View style={{flexDirection:'row', alignItems:'center'}}>
             {ListItemRightHeaderComponent ?(
-              <ListItemRightHeaderComponent/>
+              <View>{ListItemRightHeaderComponent}</View>
             ):(null)}
             <TouchableOpacity
               onPress={() => {

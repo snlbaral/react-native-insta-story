@@ -41,7 +41,7 @@ const Story = ({ data, unPressedBorderColor, pressedBorderColor, style, onStart,
     const [currentPage, setCurrentPage] = (0, react_1.useState)(0);
     const [selectedData, setSelectedData] = (0, react_1.useState)([]);
     const cube = (0, react_1.useRef)();
-    const currentStoryIndexRef = currentStoryRef ? currentStoryRef : (0, react_1.useRef)(0);
+    const currentStoryItemRef = currentStoryRef ? currentStoryRef : (0, react_1.useRef)(0);
     // Component Functions
     const _handleStoryItemPress = (item, index) => {
         const newData = dataState.slice(index);
@@ -105,7 +105,7 @@ const Story = ({ data, unPressedBorderColor, pressedBorderColor, style, onStart,
                 if (onClose) {
                     onClose(x);
                 }
-            }} index={i} currentStoryIndexRef={currentStoryIndexRef} ListItemRightHeaderComponent={ListItemRightHeaderComponent}/>);
+            }} index={i} currentStoryItemRef={currentStoryItemRef} ListItemRightHeaderComponent={ListItemRightHeaderComponent}/>);
     });
     const renderCube = () => {
         if (react_native_1.Platform.OS == 'ios') {
