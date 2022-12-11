@@ -32,13 +32,16 @@ const react_native_1 = require("react-native");
 const react_native_swipe_gestures_1 = __importDefault(require("react-native-swipe-gestures"));
 const helpers_1 = require("./helpers");
 const { width, height } = react_native_1.Dimensions.get('window');
-const StoryListItem = ({ index, key, profileImage, profileName, duration, customCloseComponent, customSwipeUpComponent, onFinish, onClosePress, stories, currentPage, currentStoryItemRef, ListItemRightHeaderComponent, ...props }) => {
+const StoryListItem = ({ index, key, profileImage, profileName, duration, customCloseComponent, customSwipeUpComponent, onFinish, onClosePress, stories, currentPage, currentStoryItemRef, ListItemRightHeaderComponent, ImageListItemProfileStyle, ImageListItemStyle, ImageComponent, story, ...props }) => {
     const [load, setLoad] = (0, react_1.useState)(true);
     const [pressed, setPressed] = (0, react_1.useState)(false);
     const [content, setContent] = (0, react_1.useState)(stories.map((x) => ({
         ...x,
         finish: 0,
     })));
+    if (typeof ListItemRightHeaderComponent === "function") {
+        ListItemRightHeaderComponent = ListItemRightHeaderComponent(story);
+    }
     const [current, setCurrent] = (0, react_1.useState)(0);
     const progress = (0, react_1.useRef)(new react_native_1.Animated.Value(0)).current;
     const prevCurrentPage = (0, helpers_1.usePrevious)(currentPage);
@@ -162,7 +165,7 @@ const StoryListItem = ({ index, key, profileImage, profileName, duration, custom
         }}>
       <react_native_1.SafeAreaView>
         <react_native_1.View style={styles.backgroundContainer}>
-          <react_native_1.Image onLoadEnd={() => start()} source={{ uri: content[current].story_image }} style={styles.image}/>
+          <ImageComponent onLoadEnd={() => start()} source={{ uri: content[current].story_image }} style={{ ...styles.image, ...ImageListItemStyle }}/>
           {load && (<react_native_1.View style={styles.spinnerContainer}>
               <react_native_1.ActivityIndicator size="large" color={'white'}/>
             </react_native_1.View>)}
@@ -182,7 +185,7 @@ const StoryListItem = ({ index, key, profileImage, profileName, duration, custom
         </react_native_1.View>
         <react_native_1.View style={styles.userContainer}>
           <react_native_1.View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            <react_native_1.Image style={styles.avatarImage} source={{ uri: profileImage }}/>
+            <ImageComponent style={{ ...styles.avatarImage, ...ImageListItemProfileStyle }} source={{ uri: profileImage }}/>
             <react_native_1.Text style={styles.avatarText}>{profileName}</react_native_1.Text>
           </react_native_1.View>
           <react_native_1.View style={{ flexDirection: 'row', alignItems: 'center' }}>

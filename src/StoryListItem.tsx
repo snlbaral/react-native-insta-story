@@ -38,6 +38,10 @@ export const StoryListItem = ({
   currentPage,
   currentStoryItemRef,
   ListItemRightHeaderComponent,
+  ImageListItemProfileStyle,
+  ImageListItemStyle,
+  ImageComponent,
+  story,
   ...props
 }: StoryListItemProps) => {
   const [load, setLoad] = useState<boolean>(true);
@@ -48,6 +52,10 @@ export const StoryListItem = ({
       finish: 0,
     })),
   );
+
+  if(typeof ListItemRightHeaderComponent === "function") {
+    ListItemRightHeaderComponent = ListItemRightHeaderComponent(story)
+  }
 
   const [current, setCurrent] = useState(0);
 
@@ -196,10 +204,10 @@ export const StoryListItem = ({
     >
       <SafeAreaView>
         <View style={styles.backgroundContainer}>
-          <Image
+          <ImageComponent
             onLoadEnd={() => start()}
             source={{ uri: content[current].story_image }}
-            style={styles.image}
+            style={{...styles.image,...ImageListItemStyle}}
           />
           {load && (
             <View style={styles.spinnerContainer}>
@@ -226,7 +234,7 @@ export const StoryListItem = ({
         </View>
         <View style={styles.userContainer}>
           <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            <Image style={styles.avatarImage} source={{ uri: profileImage }} />
+            <ImageComponent style={{...styles.avatarImage, ...ImageListItemProfileStyle}} source={{ uri: profileImage }} />
             <Text style={styles.avatarText}>{profileName}</Text>
           </View>
           <View style={{flexDirection:'row', alignItems:'center'}}>
