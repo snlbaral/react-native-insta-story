@@ -34,7 +34,7 @@ interface SharedCircleListProps {
   showText?: boolean;
   /** Username text style below the avatar */
   textStyle?: TextStyle;
-  ImageComponentStyle?: ImageStyle;
+  ImageCircleStyle?: ImageStyle;
   ImageComponent?: any;
   HeaderComponent?: any;
 }
@@ -69,6 +69,10 @@ export interface StoryListItemProps {
   currentPage: number;
   currentStoryItemRef: any;
   ListItemRightHeaderComponent: any;
+  ImageListItemStyle?: ImageStyle;
+  ImageListItemProfileStyle?: ImageStyle;
+  ImageComponent?: any;
+  story?: IUserStory;
 }
 
 export interface StoryProps {
@@ -98,7 +102,9 @@ export interface StoryProps {
   showAvatarText?: boolean;
   /** Username text style below the avatar */
   avatarTextStyle?: TextStyle;
-  ImageComponentStyle?: ImageStyle;
+  ImageCircleStyle?: ImageStyle;
+  ImageListItemStyle?: ImageStyle;
+  ImageListItemProfileStyle?: ImageStyle;
   ImageComponent?: any;
   HeaderComponent?: any;
   currentStoryRef?: any;

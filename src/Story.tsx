@@ -24,7 +24,9 @@ export const Story = ({
   showAvatarText,
   avatarTextStyle,
   ImageComponent,
-  ImageComponentStyle,
+  ImageCircleStyle,
+  ImageListItemStyle,
+  ImageListItemProfileStyle,
   HeaderComponent,
   currentStoryRef,
   ListItemRightHeaderComponent
@@ -109,6 +111,10 @@ export const Story = ({
           swipeText={swipeText}
           customSwipeUpComponent={customSwipeUpComponent}
           customCloseComponent={customCloseComponent}
+          ImageListItemProfileStyle={ImageListItemProfileStyle}
+          ImageListItemStyle={ImageListItemStyle}
+          ImageComponent={ImageComponent}
+          story={x}
           onClosePress={() => {
             setIsModalOpen(false);
             if (onClose) {
@@ -163,7 +169,7 @@ export const Story = ({
           pressedBorderColor={pressedBorderColor}
           showText={showAvatarText}
           textStyle={avatarTextStyle}
-          ImageComponentStyle={ImageComponentStyle}
+          ImageCircleStyle={ImageCircleStyle}
           ImageComponent={ImageComponent}
           HeaderComponent={HeaderComponent}
         />
@@ -193,7 +199,9 @@ export default Story;
 Story.defaultProps = {
   showAvatarText: true,
   ImageComponent: Image,
-  ImageComponentStyle: {},
+  ImageCircleStyle: {},
+  ImageListItemStyle: {},
+  ImageListItemProfileStyle: {},
   HeaderComponent: null,
   currentStoryRef: null,
   ListItemRightHeaderComponent: null

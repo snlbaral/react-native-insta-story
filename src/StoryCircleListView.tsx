@@ -11,7 +11,7 @@ const StoryCircleListView = ({
   avatarSize,
   showText,
   textStyle,
-  ImageComponentStyle,
+  ImageCircleStyle,
   ImageComponent,
   HeaderComponent
 }: StoryCircleListViewProps) => {
@@ -37,7 +37,7 @@ const StoryCircleListView = ({
             item={item}
             showText={showText}
             textStyle={textStyle}
-            ImageComponentStyle={ImageComponentStyle}
+            ImageCircleStyle={ImageCircleStyle}
             ImageComponent={ImageComponent}
           />
         )}

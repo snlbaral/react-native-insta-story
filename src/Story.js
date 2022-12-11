@@ -35,7 +35,7 @@ const StoryCircleListView_1 = __importDefault(require("./StoryCircleListView"));
 const helpers_1 = require("./helpers");
 const AndroidCubeEffect_1 = __importDefault(require("./components/AndroidCubeEffect"));
 const CubeNavigationHorizontal_1 = __importDefault(require("./components/CubeNavigationHorizontal"));
-const Story = ({ data, unPressedBorderColor, pressedBorderColor, style, onStart, onClose, duration, swipeText, customSwipeUpComponent, customCloseComponent, avatarSize, showAvatarText, avatarTextStyle, ImageComponent, ImageComponentStyle, HeaderComponent, currentStoryRef, ListItemRightHeaderComponent }) => {
+const Story = ({ data, unPressedBorderColor, pressedBorderColor, style, onStart, onClose, duration, swipeText, customSwipeUpComponent, customCloseComponent, avatarSize, showAvatarText, avatarTextStyle, ImageComponent, ImageCircleStyle, ImageListItemStyle, ImageListItemProfileStyle, HeaderComponent, currentStoryRef, ListItemRightHeaderComponent }) => {
     const [dataState, setDataState] = (0, react_1.useState)(data);
     const [isModalOpen, setIsModalOpen] = (0, react_1.useState)(false);
     const [currentPage, setCurrentPage] = (0, react_1.useState)(0);
@@ -100,7 +100,7 @@ const Story = ({ data, unPressedBorderColor, pressedBorderColor, style, onStart,
         }
     }
     const renderStoryList = () => selectedData.map((x, i) => {
-        return (<StoryListItem_1.default duration={duration * 1000} key={i} profileName={x.user_name} profileImage={x.user_image} stories={x.stories} currentPage={currentPage} onFinish={onStoryFinish} swipeText={swipeText} customSwipeUpComponent={customSwipeUpComponent} customCloseComponent={customCloseComponent} onClosePress={() => {
+        return (<StoryListItem_1.default duration={duration * 1000} key={i} profileName={x.user_name} profileImage={x.user_image} stories={x.stories} currentPage={currentPage} onFinish={onStoryFinish} swipeText={swipeText} customSwipeUpComponent={customSwipeUpComponent} customCloseComponent={customCloseComponent} ImageListItemProfileStyle={ImageListItemProfileStyle} ImageListItemStyle={ImageListItemStyle} ImageComponent={ImageComponent} story={x} onClosePress={() => {
                 setIsModalOpen(false);
                 if (onClose) {
                     onClose(x);
@@ -129,7 +129,7 @@ const Story = ({ data, unPressedBorderColor, pressedBorderColor, style, onStart,
     };
     return (<react_1.Fragment>
       <react_native_1.View style={style}>
-        <StoryCircleListView_1.default handleStoryItemPress={_handleStoryItemPress} data={dataState} avatarSize={avatarSize} unPressedBorderColor={unPressedBorderColor} pressedBorderColor={pressedBorderColor} showText={showAvatarText} textStyle={avatarTextStyle} ImageComponentStyle={ImageComponentStyle} ImageComponent={ImageComponent} HeaderComponent={HeaderComponent}/>
+        <StoryCircleListView_1.default handleStoryItemPress={_handleStoryItemPress} data={dataState} avatarSize={avatarSize} unPressedBorderColor={unPressedBorderColor} pressedBorderColor={pressedBorderColor} showText={showAvatarText} textStyle={avatarTextStyle} ImageCircleStyle={ImageCircleStyle} ImageComponent={ImageComponent} HeaderComponent={HeaderComponent}/>
       </react_native_1.View>
       <react_native_modalbox_1.default style={{
             flex: 1,
@@ -145,7 +145,9 @@ exports.default = exports.Story;
 exports.Story.defaultProps = {
     showAvatarText: true,
     ImageComponent: react_native_1.Image,
-    ImageComponentStyle: {},
+    ImageCircleStyle: {},
+    ImageListItemStyle: {},
+    ImageListItemProfileStyle: {},
     HeaderComponent: null,
     currentStoryRef: null,
     ListItemRightHeaderComponent: null
