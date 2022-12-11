@@ -56,9 +56,7 @@ export const StoryListItem = ({
   if(typeof ListItemRightHeaderComponent === "function") {
     ListItemRightHeaderComponent = ListItemRightHeaderComponent(story)
   }
-  if(typeof customSwipeUpComponent === "function") {
-    customSwipeUpComponent = customSwipeUpComponent(story)
-  }
+  
 
   const [current, setCurrent] = useState(0);
 
@@ -301,7 +299,7 @@ export const StoryListItem = ({
           style={styles.swipeUpBtn}
         >
           {customSwipeUpComponent ? (
-            customSwipeUpComponent
+            typeof customSwipeUpComponent === "function"?customSwipeUpComponent(content[current]):customSwipeUpComponent
           ) : (
             <>
               <Text style={{ color: 'white', marginTop: 5 }}></Text>

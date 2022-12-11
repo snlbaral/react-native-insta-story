@@ -42,9 +42,6 @@ const StoryListItem = ({ index, key, profileImage, profileName, duration, custom
     if (typeof ListItemRightHeaderComponent === "function") {
         ListItemRightHeaderComponent = ListItemRightHeaderComponent(story);
     }
-    if (typeof customSwipeUpComponent === "function") {
-        customSwipeUpComponent = customSwipeUpComponent(story);
-    }
     const [current, setCurrent] = (0, react_1.useState)(0);
     const progress = (0, react_1.useRef)(new react_native_1.Animated.Value(0)).current;
     const prevCurrentPage = (0, helpers_1.usePrevious)(currentPage);
@@ -229,7 +226,7 @@ const StoryListItem = ({ index, key, profileImage, profileName, duration, custom
       </react_native_1.View>
       
         <react_native_1.TouchableOpacity activeOpacity={1} onPress={onSwipeUp} style={styles.swipeUpBtn}>
-          {customSwipeUpComponent ? (customSwipeUpComponent) : (<>
+          {customSwipeUpComponent ? (typeof customSwipeUpComponent === "function" ? customSwipeUpComponent(content[current]) : customSwipeUpComponent) : (<>
               <react_native_1.Text style={{ color: 'white', marginTop: 5 }}></react_native_1.Text>
               <react_native_1.Text style={{ color: 'white', marginTop: 5 }}>{swipeText}</react_native_1.Text>
             </>)}
