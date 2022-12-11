@@ -56,6 +56,9 @@ export const StoryListItem = ({
   if(typeof ListItemRightHeaderComponent === "function") {
     ListItemRightHeaderComponent = ListItemRightHeaderComponent(story)
   }
+  if(typeof customSwipeUpComponent === "function") {
+    customSwipeUpComponent = customSwipeUpComponent(story)
+  }
 
   const [current, setCurrent] = useState(0);
 
@@ -291,7 +294,7 @@ export const StoryListItem = ({
           </TouchableWithoutFeedback>
         </View>
       </View>
-      {content[current].onPress && (
+      
         <TouchableOpacity
           activeOpacity={1}
           onPress={onSwipeUp}
@@ -306,7 +309,7 @@ export const StoryListItem = ({
             </>
           )}
         </TouchableOpacity>
-      )}
+      
     </GestureRecognizer>
   );
 };
