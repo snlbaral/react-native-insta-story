@@ -187,6 +187,9 @@ const StoryListItem = ({ index, key, profileImage, profileName, duration, custom
           <react_native_1.View style={{ flexDirection: 'row', alignItems: 'center' }}>
             <ImageComponent style={{ ...styles.avatarImage, ...ImageListItemProfileStyle }} source={{ uri: profileImage }}/>
             <react_native_1.Text style={styles.avatarText}>{profileName}</react_native_1.Text>
+            {content[current]?.date ? (<react_native_1.Text style={{ color: '#ddd',
+                marginHorizontal: 8,
+                alignSelf: "center" }}>{content[current].date}</react_native_1.Text>) : (null)}
           </react_native_1.View>
           <react_native_1.View style={{ flexDirection: 'row', alignItems: 'center' }}>
             {ListItemRightHeaderComponent ? (<react_native_1.View>{ListItemRightHeaderComponent}</react_native_1.View>) : (null)}

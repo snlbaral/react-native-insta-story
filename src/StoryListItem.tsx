@@ -237,6 +237,11 @@ export const StoryListItem = ({
           <View style={{ flexDirection: 'row', alignItems: 'center' }}>
             <ImageComponent style={{...styles.avatarImage, ...ImageListItemProfileStyle}} source={{ uri: profileImage }} />
             <Text style={styles.avatarText}>{profileName}</Text>
+            {content[current]?.date ?(
+                <Text style={{color: '#ddd',
+                    marginHorizontal:8,
+                    alignSelf:"center"}}>{content[current].date}</Text>
+            ):(null)}
           </View>
           <View style={{flexDirection:'row', alignItems:'center'}}>
             {ListItemRightHeaderComponent ?(
